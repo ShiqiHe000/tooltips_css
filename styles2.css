@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+}
+
+
+.intro-container {
+    --background-color: rgba(244, 190, 250, 50%);
+    background-color: var(--background-color);
+    height: 100vh;
+    width: 100vw;
+}
+
+.title {
+    text-align: center;
+}
+
+.intro-text {
+    font-size: 1.2rem;
+}
+
+.tooltip{
+    position: relative;
+    background-image: url("imgs/Beaver.jpg");
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    float: left;
+    border-radius: 50%;
+    margin: 50px 10px 10px 10px;
+}
+
+.tooltip::before, 
+.tooltip::after {
+    --tooltip-background-color: #333;
+    --tooltip-scale: 0;
+    --arrow-size: 10px;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(var(--tooltip-y, 0)) scale(var(--tooltip-scale));
+    transition: transform 0.2s;
+}
+
+.tooltip::before {
+    --tooltip-y: calc(-100% - var(--arrow-size));
+
+    content: attr(data-tooltip);
+    background-color: var(--tooltip-background-color);
+    border-radius: 7px;
+    width: max-content;
+    max-width: 100%;
+    padding: 10px 20px;
+    color: white;
+    transform-origin: bottom center;
+
+}
+
+.tooltip::after {
+    --tooltip-y: calc(-1 * var(--arrow-size));
+
+    content: "";
+    width: 0;
+    height: 0;
+    box-sizing: border-box;
+    border-width: var(--arrow-size);
+    border-style: solid;
+    border-color: transparent;
+    border-top-color: var(--tooltip-background-color);
+    transform-origin: top center;
+
+
+}
+
+.tooltip:hover::before, .tooltip:hover::after {
+    --tooltip-scale: 1;
+
+}
+
+
